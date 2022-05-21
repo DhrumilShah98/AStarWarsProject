@@ -1,9 +1,10 @@
 import React from "react";
+import StarWarsCharacter from "./components/StarWarsCharacter/StarWarsCharacter"
 
 const App = () => {
     return (
         <div>
-            <h1>A Star Wars Story</h1>
+            <StarWarsCharacter />
         </div>
     );
 }

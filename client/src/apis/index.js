@@ -1,5 +1,8 @@
 import axios from "axios";
 
+// Server status code - 200 (Success).
+export const SC200_OK = 200;
+
 // Axios object with Base URL configured.
 const API = axios.create({ baseURL: "http://localhost:5000" });
 
