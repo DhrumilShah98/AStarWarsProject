@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../apis";
+import Loading from "../Loading/Loading";
 
 const StarWarsCharacter = () => {
     const [starWarsChar, setStarWarsChar] = useState(null);
@@ -16,7 +17,7 @@ const StarWarsCharacter = () => {
 
     return (
         (starWarsChar == null) ?
-            <div>Hello</div> :
+            <Loading /> :
             <div>{starWarsChar.name}</div>
     );
 };
