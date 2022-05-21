@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+
 import peopleRoutes from "./routes/people.js";
 
 const app = express();
