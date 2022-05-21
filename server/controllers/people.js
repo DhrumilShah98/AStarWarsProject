@@ -74,3 +74,29 @@ export const getPerson = async (req, res) => {
     return res.status(SC_500_INTERNAL_SERVER_ERROR).json(payLoad);
   }
 };
+
+export const getPersonAsync = async (req, res) => {
+  const { id: _id } = req.params;
+  try {
+    const character = await swapi.people({ id: _id });
+    const _character = prepareCharacter(character);
+
+    const [homeWorld, species, films] = await Promise.all([character.getHomeworld(), character.getSpecies(), character.getFilms()]);
+
+    const _homeWorld = prepareHomeWorld(homeWorld);
+    _character["home_world"] = _homeWorld;
+
+    const _species = prepareSpecies(species);
+    _character["species"] = _species;
+
+    const _films = prepareFilms(films);
+    _character["films"] = _films;
+
+    const payLoad = preparePayload(SC200_OK, _character, "success");
+    return res.status(SC200_OK).json(payLoad);
+  } catch (error) {
+    console.log(error);
+    const payLoad = preparePayload(SC_500_INTERNAL_SERVER_ERROR, null, error.message);
+    return res.status(SC_500_INTERNAL_SERVER_ERROR).json(payLoad);
+  }
+};
