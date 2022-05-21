@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const App = () => {
     return (
-    <div>
-        <h1>A Star Wars Story</h1>
-    </div>
+        <div>
+            <h1>A Star Wars Story</h1>
+        </div>
     );
 }
 
