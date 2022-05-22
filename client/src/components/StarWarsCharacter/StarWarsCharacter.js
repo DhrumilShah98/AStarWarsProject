@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from "react";
-import * as api from "../../apis";
-import Loading from "../Loading/Loading";
+import React from "react";
+import { Container, Grid, Typography, Card, CardContent } from "@mui/material";
+import CharacterInfo from "./CharacterInfo";
 
-const StarWarsCharacter = () => {
-    const [starWarsChar, setStarWarsChar] = useState(null);
-
-    const getStarWarsCharacterById = async () => {
-        const payload = await api.getStarWarsCharacterById(2);
-        const _starWarsChar = (payload.status === api.SC200_OK) ? payload.data.data : null;
-        setStarWarsChar(_starWarsChar);
-    };
-
-    useEffect(() => {
-        getStarWarsCharacterById();
-    }, []);
-
+const StarWarsCharacter = ({ starWarsCharacter }) => {
     return (
-        (starWarsChar == null) ?
-            <Loading /> :
-            <div>{starWarsChar.name}</div>
+        <Container>
+            <Grid container spacing={2}>
+                <Grid item lg={4} md={4} sm={6} xs={12}>
+                    <CharacterInfo starWarsCharacter={starWarsCharacter} />
+                </Grid>
+                <Grid item lg={8} md={8} sm={6} xs={12}>
+                    <Card elevation={6}>
+                        <CardContent>
+                            <Typography variant="h3" sx={{ fontWeight: "bold" }}>{starWarsCharacter.name}</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+        </Container >
     );
 };
 

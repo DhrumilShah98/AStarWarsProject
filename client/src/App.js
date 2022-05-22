@@ -1,11 +1,9 @@
 import React from "react";
-import StarWarsCharacter from "./components/StarWarsCharacter/StarWarsCharacter"
+import Home from "./components/Home/Home"
 
 const App = () => {
     return (
-        <div>
-            <StarWarsCharacter />
-        </div>
+        <Home />
     );
 }
 
