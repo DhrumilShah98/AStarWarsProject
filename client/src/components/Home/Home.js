@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading";
 import StarWarsCharacter from "../StarWarsCharacter/StarWarsCharacter";
 //import * as api from "../../apis";
 import { starWarsCharacterData } from "../../data/data";
+import { Container, Paper, TextField } from "@mui/material";
 
 const Home = () => {
     //const [starWarsCharacter, setStarWarsCharacter] = useState(null);
@@ -19,7 +20,17 @@ const Home = () => {
     // }, []);
 
     return (
-        (starWarsCharacterData == null) ? <Loading /> : <StarWarsCharacter starWarsCharacter={starWarsCharacterData} />
+        <Container>
+            <Paper elevation={6} sx={{ marginBottom: 2 }}>
+                <TextField
+                    id="characterIDTextField"
+                    label="Enter Character Id"
+                    variant="outlined"
+                    fullWidth
+                    required />
+            </Paper>
+            {(starWarsCharacterData == null) ? <Loading /> : <StarWarsCharacter starWarsCharacter={starWarsCharacterData} />}
+        </Container>
     );
 };
 
