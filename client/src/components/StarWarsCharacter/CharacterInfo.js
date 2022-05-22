@@ -16,8 +16,8 @@ const CharacterInfo = ({ starWarsCharacter }) => {
                 src={STAR_WARS_BANNER}
                 alt="Star Wars Banner" />
             <CardContent>
-                <List dense={true}>
-                    <ListItem>
+                <List dense={true} disablePadding>
+                    <ListItem disablePadding>
                         <Grid container spacing={2}>
                             <Grid item xs={6} sm={6} md={6} lg={6}>
                                 <ListItemText
@@ -31,7 +31,7 @@ const CharacterInfo = ({ starWarsCharacter }) => {
                             </Grid>
                         </Grid>
                     </ListItem>
-                    <ListItem>
+                    <ListItem disablePadding>
                         <Grid container spacing={2}>
                             <Grid item xs={6} sm={6} md={6} lg={6}>
                                 <ListItemText
@@ -45,7 +45,7 @@ const CharacterInfo = ({ starWarsCharacter }) => {
                             </Grid>
                         </Grid>
                     </ListItem>
-                    <ListItem>
+                    <ListItem disablePadding>
                         <Grid container spacing={2}>
                             <Grid item xs={6} sm={6} md={6} lg={6}>
                                 <ListItemText

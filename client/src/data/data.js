@@ -11,6 +11,20 @@ export const starWarsCharacterData = {
         "terran": "desert",
         "population": "200000"
     },
+    "species": [
+        {
+            "name": "Human",
+            "average_lifespan": "120",
+            "classification": "mammal",
+            "language": "Galactic Basic",
+        },
+        {
+            "name": "Sullustan",
+            "average_lifespan": "unknown",
+            "classification": "mammal",
+            "language": "Sullutese",
+        },
+    ],
     "films": [
         {
             "title": "A New Hope",
