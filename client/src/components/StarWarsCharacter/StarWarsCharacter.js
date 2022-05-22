@@ -1,20 +1,17 @@
 import React from "react";
-import { Container, Grid, Typography, Card, CardContent } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import CharacterInfo from "./CharacterInfo";
+import HomePlanet from "./HomePlanet";
 
 const StarWarsCharacter = ({ starWarsCharacter }) => {
     return (
         <Container>
             <Grid container spacing={2}>
-                <Grid item lg={4} md={4} sm={6} xs={12}>
+                <Grid item xs={12} sm={6} md={4} lg={4} >
                     <CharacterInfo starWarsCharacter={starWarsCharacter} />
                 </Grid>
-                <Grid item lg={8} md={8} sm={6} xs={12}>
-                    <Card elevation={6}>
-                        <CardContent>
-                            <Typography variant="h3" sx={{ fontWeight: "bold" }}>{starWarsCharacter.name}</Typography>
-                        </CardContent>
-                    </Card>
+                <Grid item xs={12} sm={6} md={8} lg={8} >
+                    <HomePlanet homeWorld={starWarsCharacter.home_world} />
                 </Grid>
             </Grid>
         </Container >
