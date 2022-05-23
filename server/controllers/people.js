@@ -96,11 +96,11 @@ export const getPerson = async (req, res) => {
     const _films = prepareFilms(films);
     _character["films"] = _films;
 
-    const payLoad = preparePayload(SC200_OK, _character, "success");
+    const payLoad = preparePayload(SC200_OK, _character, "Character found.");
     return res.status(SC200_OK).json(payLoad);
   } catch (error) {
     if (error.message == SC404_NOT_FOUND) {
-      const payLoad = preparePayload(SC404_NOT_FOUND, null, error.message);
+      const payLoad = preparePayload(SC404_NOT_FOUND, null, "No character found for this id.");
       return res.status(SC404_NOT_FOUND).json(payLoad);
     } else {
       const payLoad = preparePayload(SC_500_INTERNAL_SERVER_ERROR, null, "Something went wrong. Please try again.");
@@ -135,11 +135,11 @@ export const getPersonAsync = async (req, res) => {
     const _films = prepareFilms(films);
     _character["films"] = _films;
 
-    const payLoad = preparePayload(SC200_OK, _character, "success");
+    const payLoad = preparePayload(SC200_OK, _character, "Character found.");
     return res.status(SC200_OK).json(payLoad);
   } catch (error) {
     if (error.message == SC404_NOT_FOUND) {
-      const payLoad = preparePayload(SC404_NOT_FOUND, null, error.message);
+      const payLoad = preparePayload(SC404_NOT_FOUND, null, "No character found for this id.");
       return res.status(SC404_NOT_FOUND).json(payLoad);
     } else {
       const payLoad = preparePayload(SC_500_INTERNAL_SERVER_ERROR, null, "Something went wrong. Please try again.");
