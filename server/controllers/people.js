@@ -1,5 +1,5 @@
 import swapi from "swapi-node";
-import { SC200_OK, SC_500_INTERNAL_SERVER_ERROR, preparePayload } from "../utils/constants.js";
+import { SC200_OK, SC404_NOT_FOUND, SC_500_INTERNAL_SERVER_ERROR, preparePayload } from "../utils/constants.js";
 
 /**
  * Prepares the character to return in the response body.
@@ -99,8 +99,13 @@ export const getPerson = async (req, res) => {
     const payLoad = preparePayload(SC200_OK, _character, "success");
     return res.status(SC200_OK).json(payLoad);
   } catch (error) {
-    const payLoad = preparePayload(SC_500_INTERNAL_SERVER_ERROR, null, error.message);
-    return res.status(SC_500_INTERNAL_SERVER_ERROR).json(payLoad);
+    if (error.message == SC404_NOT_FOUND) {
+      const payLoad = preparePayload(SC404_NOT_FOUND, null, error.message);
+      return res.status(SC404_NOT_FOUND).json(payLoad);
+    } else {
+      const payLoad = preparePayload(SC_500_INTERNAL_SERVER_ERROR, null, "Something went wrong. Please try again.");
+      return res.status(SC_500_INTERNAL_SERVER_ERROR).json(payLoad);
+    }
   }
 };
 
@@ -133,8 +138,12 @@ export const getPersonAsync = async (req, res) => {
     const payLoad = preparePayload(SC200_OK, _character, "success");
     return res.status(SC200_OK).json(payLoad);
   } catch (error) {
-    console.log(error);
-    const payLoad = preparePayload(SC_500_INTERNAL_SERVER_ERROR, null, error.message);
-    return res.status(SC_500_INTERNAL_SERVER_ERROR).json(payLoad);
+    if (error.message == SC404_NOT_FOUND) {
+      const payLoad = preparePayload(SC404_NOT_FOUND, null, error.message);
+      return res.status(SC404_NOT_FOUND).json(payLoad);
+    } else {
+      const payLoad = preparePayload(SC_500_INTERNAL_SERVER_ERROR, null, "Something went wrong. Please try again.");
+      return res.status(SC_500_INTERNAL_SERVER_ERROR).json(payLoad);
+    }
   }
 };
