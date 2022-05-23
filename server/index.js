@@ -19,6 +19,14 @@ app.use(helmet());
 // Incoming requests for <base_url>/people/<end_point> are routed here.
 app.use("/people", peopleRoutes);
 
+// Hello message route.
+app.use("/", (req, res) => {
+  res.status(200).json({
+    message: "Hello from the Star Wars backend.",
+    hint: "Try <base_url>/people/id",
+  });
+});
+
 // PORT on which this Express application runs. If not available, run this application on PORT 5000.
 const PORT = process.env.PORT || 5000;
 
