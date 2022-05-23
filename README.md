@@ -17,6 +17,9 @@ A Star Wars 🌌🔫 project beautifully developed using [SWAPI](https://swapi.d
 ## Backend
 * **Stack** - *NodeJS and ExpressJS*
 
+## Important
+To connect frontend with backend and to run both of them on local machine, replace the base url in this [file](https://github.com/DhrumilShah98/AStarWarsProject/blob/main/client/src/apis/index.js) on line number 10 with *http://localhost:5000*.
+
 ## Prerequisites 🚀
 To have a local copy of this website up and running on your local machine, you will first need to install the following software/libraries/plugins:
 
