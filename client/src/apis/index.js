@@ -3,6 +3,9 @@ import axios from "axios";
 // Server status code - 200 (Success).
 export const SC200_OK = 200;
 
+// Server status code - 404 (Resource Not Found).
+export const SC404_NOT_FOUND = 404;
+
 // Axios object with Base URL configured.
 const API = axios.create({ baseURL: "http://localhost:5000" });
 

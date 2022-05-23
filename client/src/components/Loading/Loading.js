@@ -13,7 +13,7 @@ const Loading = () => {
     };
 
     return (
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="90vh">
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
             <Lottie options={lottieOptions} height={400} width={400} />
         </Box>
     );

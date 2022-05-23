@@ -1,69 +1,111 @@
 import React, { useState, useEffect } from "react";
-import Loading from "../Loading/Loading";
+import { Container, Grid, TextField, Button } from "@mui/material";
 import StarWarsCharacter from "../StarWarsCharacter/StarWarsCharacter";
+import Loading from "../Loading/Loading";
 import * as api from "../../apis";
-import { Button, Container, Grid, TextField } from "@mui/material";
 
 const Home = () => {
-    const [formData, setFormData] = useState({ characterId: 2, isValid: true, error: "" });
+    const [formData, setFormData] = useState({ characterIdValue: 2, characterIdError: "", isCharacterIdValid: true });
     const [starWarsCharacter, setStarWarsCharacter] = useState(null);
 
     useEffect(() => {
-        getStarWarsCharacterById(formData.characterId);
-    });
+        getStarWarsCharacterById(formData.characterIdValue);
+        // eslint-disable-next-line
+    }, []);
 
-    const getStarWarsCharacterById = async (id) => {
-        const payload = await api.getStarWarsCharacterById(id);
-        const _starWarsCharacter = (payload.status === api.SC200_OK) ? payload.data.data : null;
-        if (_starWarsCharacter !== null) {
-            setStarWarsCharacter(_starWarsCharacter);
+    const getStarWarsCharacterById = async (characterId) => {
+        try {
+            const payload = await api.getStarWarsCharacterById(characterId);
+            if (payload.status === api.SC200_OK &&
+                payload.data.status === api.SC200_OK &&
+                payload.data.data !== null) {
+                setStarWarsCharacter(payload.data.data);
+            } else {
+                setFormData({
+                    ...formData,
+                    characterIdError: "Something went wrong. Please try again.",
+                    isCharacterIdValid: false
+                });
+            }
+        } catch (error) {
+            if (error.status === api.SC404_NOT_FOUND) {
+                setFormData({
+                    ...formData,
+                    characterIdError: "No character found for this id.",
+                    isCharacterIdValid: false
+                });
+            }
         }
     };
 
     const validateFormData = () => {
-        return formData.isValid;
+        return formData.isCharacterIdValid;
     };
 
-    const submit = (e) => {
-        e.preventDefault();
-        if (validateFormData()) {
-            console.log("Hello");
-            getStarWarsCharacterById(formData.characterId);
+    const validate = (e) => {
+        switch (e.target.name) {
+            case "characterIdValue":
+                const isNumberCorrect = RegExp(/^[1-9][0-9]*$/).test(e.target.value);
+                if (e.target.value === "" || e.target.value === null) {
+                    formData["characterIdError"] = "Character id is required."
+                    formData["isCharacterIdValid"] = false;
+                } else if (!isNumberCorrect) {
+                    formData["characterIdError"] = "Please enter a valid character id."
+                    formData["isCharacterIdValid"] = false;
+                } else {
+                    formData["characterIdError"] = ""
+                    formData["isCharacterIdValid"] = true;
+                }
+                break;
+            default:
+                break;
         }
-    };
+    }
 
     const onChange = (e) => {
+        validate(e)
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
+    const submit = (e) => {
+        e.preventDefault();
+        if (validateFormData()) {
+            getStarWarsCharacterById(formData.characterIdValue);
+        }
+    };
+
     return (
         <Container>
             <form onSubmit={submit} noValidate style={{ width: "100%", display: "flex", "flex-flow": "row wrap", "align-items": "center" }}>
-                <Grid container spacing={2} direction="row"
-                    alignItems="center"
-                    justifyContent="center">
+                <Grid container spacing={2}>
                     <Grid item xs={9} sm={10} md={10} lg={10}>
                         <TextField
-                            id="characterId"
+                            id="characterIdValue"
                             type="text"
-                            name="characterId"
-                            label="Character ID [1 - 83]"
+                            name="characterIdValue"
+                            label="Character Id"
                             variant="outlined"
                             autoComplete="off"
-                            value={formData.characterId}
+                            value={formData.characterIdValue}
                             onChange={onChange}
-                            error={!formData.isValid}
-                            helperText={formData.error}
+                            error={!formData.isCharacterIdValid}
+                            helperText={formData.characterIdError}
                             margin="normal"
                             fullWidth
                             required />
                     </Grid>
                     <Grid item xs={3} sm={2} md={2} lg={2}>
-                        <Button variant="contained" size="large" fullWidth>
-                            Submit
+                        <Button variant="contained"
+                            size="large"
+
+                            disabled={!validateFormData()}
+                            fullWidth
+                            type="submit"
+                            sx={{ marginTop: "15px", height: "56px" }}>
+                            Search
                         </Button>
                     </Grid>
                 </Grid>
