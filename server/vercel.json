@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/people/(.*)",
+      "dest": "/people"
+    },
+    {
       "src": "/(.*)",
       "dest": "/"
     }
