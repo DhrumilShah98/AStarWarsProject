@@ -15,8 +15,8 @@ const HomePlanet = ({ homeWorld }) => {
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <ListItemText
-                                primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Planet Terran</Typography>}
-                                secondary={<Typography variant="body1" component="body1">{homeWorld.terran}</Typography>} />
+                                primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Planet Terrain</Typography>}
+                                secondary={<Typography variant="body1" component="body1">{homeWorld.terrain}</Typography>} />
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <ListItemText
