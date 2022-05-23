@@ -7,7 +7,7 @@ export const SC200_OK = 200;
 export const SC404_NOT_FOUND = 404;
 
 // Axios object with Base URL configured.
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({ baseURL: "https://astarwarsprojectbackend.vercel.app" });
 
 /**
  * API to fetch a Star Wars character by id.
