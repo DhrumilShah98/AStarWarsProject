@@ -8,19 +8,19 @@ const Species = ({ species }) => {
                 <Typography variant="h5" component="h2" sx={{ fontWeight: "bold" }}>Species</Typography>
                 {species.map((s, index) => {
                     return (
-                        <Box>
+                        <Box key={index}>
                             <List dense={true} disablePadding>
                                 <ListItem disablePadding>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6} sm={6} md={6} lg={6}>
                                             <ListItemText
                                                 primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Name</Typography>}
-                                                secondary={<Typography variant="body1" component="body1">{s.name}</Typography>} />
+                                                secondary={<Typography variant="body2">{s.name}</Typography>} />
                                         </Grid>
                                         <Grid item xs={6} sm={6} md={6} lg={6}>
                                             <ListItemText
                                                 primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Classification</Typography>}
-                                                secondary={<Typography variant="body1" component="body1">{s.classification}</Typography>} />
+                                                secondary={<Typography variant="body2">{s.classification}</Typography>} />
                                         </Grid>
                                     </Grid>
                                 </ListItem>
@@ -29,12 +29,12 @@ const Species = ({ species }) => {
                                         <Grid item xs={6} sm={6} md={6} lg={6}>
                                             <ListItemText
                                                 primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Average Lifespan</Typography>}
-                                                secondary={<Typography variant="body1" component="body1">{s.average_lifespan}</Typography>} />
+                                                secondary={<Typography variant="body2">{s.average_lifespan}</Typography>} />
                                         </Grid>
                                         <Grid item xs={6} sm={6} md={6} lg={6}>
                                             <ListItemText
                                                 primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Langauage</Typography>}
-                                                secondary={<Typography variant="body1" component="body1">{s.language}</Typography>} />
+                                                secondary={<Typography variant="body2">{s.language}</Typography>} />
                                         </Grid>
                                     </Grid>
                                 </ListItem>

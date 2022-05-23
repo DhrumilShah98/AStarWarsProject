@@ -64,6 +64,7 @@ const prepareFilms = (films) => {
       director: f.director,
       producer: f.producer,
       release_date: f.release_date,
+      episode_id: f.episode_id,
     });
   });
   return _films;

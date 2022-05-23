@@ -11,17 +11,17 @@ const HomePlanet = ({ homeWorld }) => {
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <ListItemText
                                 primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Planet Name</Typography>}
-                                secondary={<Typography variant="body1" component="body1">{homeWorld.name}</Typography>} />
+                                secondary={<Typography variant="body2">{homeWorld.name}</Typography>} />
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <ListItemText
                                 primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Planet Terrain</Typography>}
-                                secondary={<Typography variant="body1" component="body1">{homeWorld.terrain}</Typography>} />
+                                secondary={<Typography variant="body2">{homeWorld.terrain}</Typography>} />
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4}>
                             <ListItemText
                                 primary={<Typography variant="h6" component="h2" sx={{ fontWeight: "bold" }}>Planet Population</Typography>}
-                                secondary={<Typography variant="body1" component="body1">{homeWorld.population}</Typography>} />
+                                secondary={<Typography variant="body2">{homeWorld.population}</Typography>} />
                         </Grid>
                     </Grid>
                 </ListItem>

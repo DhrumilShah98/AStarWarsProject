@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid, Box } from "@mui/material";
 import CharacterInfo from "./CharacterInfo";
+import Species from "./Species";
 import HomePlanet from "./HomePlanet";
 import Films from "./Films";
-import Species from "./Species";
 
 const StarWarsCharacter = ({ starWarsCharacter }) => {
     return (

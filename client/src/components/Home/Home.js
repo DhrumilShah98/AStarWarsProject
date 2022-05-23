@@ -5,14 +5,19 @@ import Loading from "../Loading/Loading";
 import * as api from "../../apis";
 
 const Home = () => {
-    const [formData, setFormData] = useState({ characterIdValue: 2, characterIdError: "", isCharacterIdValid: true });
+    const [formData, setFormData] = useState({ characterIdValue: "2", characterIdError: "", isCharacterIdValid: true });
     const [starWarsCharacter, setStarWarsCharacter] = useState(null);
 
+    // Calls the API first time (only called one time) when the page loads with initial character id = 2.
     useEffect(() => {
         getStarWarsCharacterById(formData.characterIdValue);
         // eslint-disable-next-line
     }, []);
 
+    /**
+     * Gets the star wars character data for the provided id. This method further triggers the UI update.
+     * @param {String} characterId - Id of the star wars character.
+     */
     const getStarWarsCharacterById = async (characterId) => {
         try {
             const payload = await api.getStarWarsCharacterById(characterId);
@@ -36,10 +41,18 @@ const Home = () => {
         }
     };
 
+    /**
+     * Gets the truthiness of the character id entered.
+     * @returns true if character id is valid otherwise false.
+     */
     const validateFormData = () => {
         return formData.isCharacterIdValid;
     };
 
+    /**
+     * Validates the entered star wars character id.
+     * @param {Object} e - Event object.
+     */
     const validate = (e) => {
         switch (e.target.name) {
             case "characterIdValue":
@@ -60,6 +73,10 @@ const Home = () => {
         }
     }
 
+    /**
+     * Called when the data in the form changes. (i.e., when the character id changes).
+     * @param {Object} e - Event object.
+     */
     const onChange = (e) => {
         validate(e)
         setFormData({
@@ -68,6 +85,10 @@ const Home = () => {
         });
     };
 
+    /**
+     * Submits the form.
+     * @param {Object} e - Event object.
+     */
     const submit = (e) => {
         e.preventDefault();
         if (validateFormData()) {
@@ -78,32 +99,32 @@ const Home = () => {
 
     return (
         <Container>
-            <form onSubmit={submit} noValidate style={{ width: "100%", display: "flex", "flex-flow": "row wrap", "align-items": "center" }}>
+            <form onSubmit={submit} noValidate style={{ width: "100%", display: "flex", flexFlow: "row wrap", alignItems: "center" }}>
                 <Grid container spacing={2}>
                     <Grid item xs={9} sm={10} md={10} lg={10}>
                         <TextField
-                            id="characterIdValue"
                             type="text"
+                            id="characterIdValue"
                             name="characterIdValue"
                             label="Character Id"
                             variant="outlined"
                             autoComplete="off"
                             value={formData.characterIdValue}
-                            onChange={onChange}
                             error={!formData.isCharacterIdValid}
                             helperText={formData.characterIdError}
+                            onChange={onChange}
                             margin="normal"
                             fullWidth
                             required />
                     </Grid>
                     <Grid item xs={3} sm={2} md={2} lg={2}>
-                        <Button variant="contained"
-                            size="large"
-
-                            disabled={!validateFormData()}
-                            fullWidth
+                        <Button
                             type="submit"
-                            sx={{ marginTop: "15px", height: "56px" }}>
+                            variant="contained"
+                            size="large"
+                            disabled={!validateFormData()}
+                            sx={{ marginTop: "15px", height: "56px" }}
+                            fullWidth>
                             Search
                         </Button>
                     </Grid>

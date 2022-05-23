@@ -1,3 +1,5 @@
+// Fake data for a single Star Wars character.
+// Added because the Star Wars APIs were not working.
 export const starWarsCharacterData = {
     "name": "Luke Skywalker",
     "height": "172",
