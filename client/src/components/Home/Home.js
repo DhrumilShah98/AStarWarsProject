@@ -28,13 +28,11 @@ const Home = () => {
                 });
             }
         } catch (error) {
-            if (error.status === api.SC404_NOT_FOUND) {
-                setFormData({
-                    ...formData,
-                    characterIdError: "No character found for this id.",
-                    isCharacterIdValid: false
-                });
-            }
+            setFormData({
+                ...formData,
+                characterIdError: error.response.data.message,
+                isCharacterIdValid: false
+            });
         }
     };
 
@@ -73,6 +71,7 @@ const Home = () => {
     const submit = (e) => {
         e.preventDefault();
         if (validateFormData()) {
+            setStarWarsCharacter(null);
             getStarWarsCharacterById(formData.characterIdValue);
         }
     };
