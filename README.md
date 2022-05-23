@@ -6,9 +6,10 @@ A Star Wars 🌌🔫 project beautifully developed using [SWAPI](https://swapi.d
 * **License** - MIT
 
 ## Links
+* **Frontend Deployment Link** - [frontend](https://astarwarsproject.vercel.app/)
+* **Backend Deployment Link** - [backend](https://astarwarsprojectbackend.vercel.app/)
 * **Frontend GitHub** - [client](https://github.com/DhrumilShah98/AStarWarsProject/tree/main/client)
 * **Backend GitHub** - [server](https://github.com/DhrumilShah98/AStarWarsProject/tree/main/server)
-* **Deployment Link** - Coming Soon
 
 ## Frontend
 * **Stack** - *ReactJS and Material UI*
